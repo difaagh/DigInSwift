@@ -13,21 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageDice1: UIImageView!
     @IBOutlet weak var imageDice2: UIImageView!
     
-    var leftDiceImage = 1
-    var rightDiceImage = 4
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    let diceArray = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
 
 
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        
-        imageDice1.image = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")][leftDiceImage]
-        imageDice2.image = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")][rightDiceImage]
-        
-        // simple function to change image
-        leftDiceImage+=1
-        rightDiceImage-=1
+        // refactoring function to randomizing the array
+        imageDice1.image = diceArray[Int.random(in: 0...5)]
+        imageDice2.image = diceArray.randomElement()
         
     }
 }
